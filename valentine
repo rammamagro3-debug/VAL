@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pinky 💖</title>
+
+<style>
+/* ================== RESET ================== */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family: "Segoe UI", sans-serif;
+    height:100vh;
+    overflow:hidden;
+    background: radial-gradient(ellipse at bottom,#0b1d2e 0%, #05080f 100%);
+    color:white;
+}
+
+/* ================== CINEMATIC FADE ================== */
+body.fade-in{
+    animation:fadeIn 2.5s ease forwards;
+}
+@keyframes fadeIn{
+    from{opacity:0;}
+    to{opacity:1;}
+}
+
+/* ================== MILKY WAY ================== */
+.milkyway{
+    position:fixed;
+    top:15%;
+    left:-40%;
+    width:180%;
+    height:250px;
+    background:radial-gradient(circle,rgba(255,255,255,0.35),transparent 70%);
+    filter:blur(70px);
+    opacity:0.25;
+    transform:rotate(-18deg);
+    pointer-events:none;
+}
+
+/* ================== STARS ================== */
+.stars{
+    position:fixed;
+    width:100%;
+    height:100%;
+    pointer-events:none;
+}
+.star{
+    position:absolute;
+    width:2px;
+    height:2px;
+    background:white;
+    border-radius:50%;
+    animation:twinkle 2s infinite alternate;
+}
+@keyframes twinkle{
+    from{opacity:0.3;}
+    to{opacity:1;}
+}
+
+/* ================== SKY NAME ================== */
+.name-sky{
+    position:absolute;
+    top:18%;
+    width:100%;
+    text-align:center;
+    font-size:70px;
+    font-weight:bold;
+    letter-spacing:8px;
+    color:white;
+    text-shadow:
+        0 0 10px #fff,
+        0 0 25px #87ceeb,
+        0 0 50px #00bfff,
+        0 0 90px #00bfff;
+    animation:nameGlow 3s infinite alternate;
+}
+@keyframes nameGlow{
+    from{opacity:0.75;}
+    to{opacity:1;}
+}
+
+/* ================== PALMS ================== */
+.palm{
+    position:absolute;
+    bottom:28%;
+    font-size:110px;
+}
+.palm.left{left:30px;}
+.palm.right{right:30px;}
+
+/* ================== PROPOSAL BOX ================== */
+.container{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    background:rgba(255,182,193,0.15);
+    backdrop-filter:blur(25px);
+    padding:60px 90px;
+    border-radius:25px;
+    text-align:center;
+    box-shadow:0 0 40px rgba(255,105,180,0.3);
+    transition:opacity 1.5s ease;
+}
+.container.hidden{
+    opacity:0;
+    pointer-events:none;
+}
+
+/* ================== BUTTONS ================== */
+button{
+    padding:14px 38px;
+    font-size:20px;
+    border:none;
+    border-radius:40px;
+    margin:15px;
+    cursor:pointer;
+    transition:all 0.3s ease;
+}
+
+#yesBtn{
+    background:linear-gradient(45deg,#87ceeb,#00bfff);
+    color:white;
+    animation:yesGlow 2s infinite alternate;
+}
+@keyframes yesGlow{
+    from{box-shadow:0 0 15px #87ceeb;}
+    to{box-shadow:0 0 60px #00bfff;}
+}
+
+#noBtn{
+    background:#333;
+    color:white;
+}
+
+/* ================== HEART ================== */
+.heart{
+    position:fixed;
+    font-size:22px;
+    animation:floatUp 4s linear forwards;
+    pointer-events:none;
+}
+@keyframes floatUp{
+    to{
+        transform:translateY(-120vh) scale(1.5);
+        opacity:0;
+    }
+}
+
+/* ================== FIREWORK ================== */
+.firework{
+    position:fixed;
+    width:4px;
+    height:4px;
+    border-radius:50%;
+    animation:explode 1s ease-out forwards;
+    pointer-events:none;
+}
+@keyframes explode{
+    to{
+        transform:translate(var(--x),var(--y));
+        opacity:0;
+    }
+}
+
+/* ================== SPARKLE TRAIL ================== */
+.sparkle{
+    position:fixed;
+    width:5px;
+    height:5px;
+    background:white;
+    border-radius:50%;
+    pointer-events:none;
+    animation:spark 0.8s linear forwards;
+}
+@keyframes spark{
+    to{opacity:0;transform:scale(2);}
+}
+
+</style>
+</head>
+<body class="fade-in">
+
+<div class="milkyway"></div>
+<div class="stars" id="stars"></div>
+<div class="name-sky" id="nameSky">PINKY ✨</div>
+
+<div class="container" id="box">
+    <h1>Will you be my Valentine? 💖</h1>
+    <button id="yesBtn">Yes ❤️</button>
+    <button id="noBtn">No 😢</button>
+</div>
+
+<div class="palm left">🌴</div>
+<div class="palm right">🌴</div>
+
+<!-- Animated SVG Ocean -->
+<svg viewBox="0 0 1440 320" style="position:absolute;bottom:0;width:100%;">
+<path fill="#003566">
+<animate attributeName="d" dur="6s" repeatCount="indefinite"
+values="
+M0,224L60,208C120,192,240,160,360,165C480,171,600,213,720,224C840,235,960,213,1080,181C1200,149,1320,107,1380,85L1440,64L1440,320L0,320Z;
+M0,192L60,170C120,149,240,107,360,122C480,139,600,213,720,224C840,235,960,181,1080,149C1200,117,1320,107,1380,101L1440,96L1440,320L0,320Z;
+M0,224L60,208C120,192,240,160,360,165C480,171,600,213,720,224C840,235,960,213,1080,181C1200,149,1320,107,1380,85L1440,64L1440,320L0,320Z"/>
+</path>
+</svg>
+
+<audio id="music" loop>
+<source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_0c6ffb2e9b.mp3?filename=romantic-ambient-110397.mp3">
+</audio>
+
+<script>
+/* ================== FULLSCREEN ================== */
+document.addEventListener("click",()=>{
+    if(!document.fullscreenElement){
+        document.documentElement.requestFullscreen();
+    }
+    document.getElementById("music").play();
+},{once:true});
+
+/* ================== STAR GENERATOR ================== */
+const starContainer=document.getElementById("stars");
+for(let i=0;i<220;i++){
+    const star=document.createElement("div");
+    star.className="star";
+    star.style.top=Math.random()*100+"%";
+    star.style.left=Math.random()*100+"%";
+    star.style.animationDuration=(Math.random()*3+1)+"s";
+    starContainer.appendChild(star);
+}
+
+/* ================== SPARKLE TRAIL ================== */
+document.addEventListener("mousemove",e=>{
+    const spark=document.createElement("div");
+    spark.className="sparkle";
+    spark.style.left=e.pageX+"px";
+    spark.style.top=e.pageY+"px";
+    document.body.appendChild(spark);
+    setTimeout(()=>spark.remove(),800);
+});
+
+/* ================== HEART CREATOR ================== */
+function createHeart(){
+    const heart=document.createElement("div");
+    heart.className="heart";
+    heart.innerHTML="💖";
+    heart.style.left=Math.random()*100+"vw";
+    heart.style.bottom="0px";
+    document.body.appendChild(heart);
+    setTimeout(()=>heart.remove(),4000);
+}
+
+/* ================== FIREWORK CREATOR ================== */
+function createFirework(x,y){
+    for(let i=0;i<40;i++){
+        const fw=document.createElement("div");
+        fw.className="firework";
+        fw.style.background=`hsl(${Math.random()*360},100%,60%)`;
+        fw.style.left=x+"px";
+        fw.style.top=y+"px";
+        fw.style.setProperty('--x',(Math.random()*250-125)+"px");
+        fw.style.setProperty('--y',(Math.random()*250-125)+"px");
+        document.body.appendChild(fw);
+        setTimeout(()=>fw.remove(),1000);
+    }
+}
+
+/* ================== BUTTON ACTION ================== */
+const yesBtn=document.getElementById("yesBtn");
+const box=document.getElementById("box");
+const nameSky=document.getElementById("nameSky");
+
+yesBtn.addEventListener("click",()=>{
+    box.classList.add("hidden");
+    nameSky.innerHTML="PINKY 💖 FOREVER";
+
+    setInterval(()=>createHeart(),900);
+    setInterval(()=>{
+        createFirework(
+            Math.random()*window.innerWidth,
+            Math.random()*window.innerHeight/2
+        );
+    },1500);
+});
+</script>
+
+</body>
+</html>
